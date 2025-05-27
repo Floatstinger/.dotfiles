@@ -11,7 +11,7 @@ zstyle :compinstall filename '/home/(whoami)/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-export PS1="[%n]-[%T] => [%d] %% "
+PS1="%B%F{magenta}[%n]-[%T]%f%b => %F{cyan}[%d]%f %% "
 
 #Aliases
-alias ls='ls -lrta'
+alias ls='ls -lrta --color=auto'
