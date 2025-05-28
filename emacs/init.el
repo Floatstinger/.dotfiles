@@ -63,6 +63,9 @@
 	  ;; Toggle fullscreen
 	  ([?\s-f] . exwm-layout-toggle-fullscreen)
 
+	  ;; Toggle Tiling/Floating mode
+	  ([?\s-t] . exwm-floating-toggle-floating)
+
           ;; Launch applications via shell command
           ([?\s-&] . (lambda (command)
                        (interactive (list (read-shell-command "Run: ")))
@@ -77,8 +80,14 @@
                         (lambda ()
                           (interactive)
                           (exwm-workspace-switch-create ,i))))
-                    (number-sequence 0 9))))   
-(exwm-enable))
+                    (number-sequence 0 9))))
+  ;;Buffer namings
+  (add-hook 'exwm-update-class-hook
+	    (lambda ()
+	      (exwm-workspace-rename-buffer exwm-class-name)))
+  (exwm-enable))
+;;End of EXWM Setup
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
