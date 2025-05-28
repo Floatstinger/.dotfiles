@@ -1,8 +1,20 @@
+;;Emacs base setup
+
+(tool-bar-mode -1)
+(display-line-numbers-mode 1)
+(menu-bar-mode -1)
+(load-theme 'deeper-blue)
+
+;;(set-mouse-color "red3")
+;;(set-foreground-color "white")
+;;(set-background-color "gray6")
+
 ;;EXWM configuration
 
 (use-package exwm
  :ensure t
- :config 
+ :config
+  (exwm-background-mode 1)
   (setq exwm-workspace-number 5)
   ;; When window "class" updates, use it to set the buffer name
   ;; (add-hook 'exwm-update-class-hook #'efs/exwm-update-class)
@@ -50,13 +62,15 @@
                           (exwm-workspace-switch-create ,i))))
                     (number-sequence 0 9))))   
 (exwm-enable))
-
-;;Emacs base setup
-
-(tool-bar-mode -1)
-(display-line-numbers-mode 1)
-(menu-bar-mode -1)
-
-(set-mouse-color "red3")
-(set-foreground-color "white")
-(set-background-color "gray6")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
