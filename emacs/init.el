@@ -6,10 +6,6 @@
 (load-theme 'deeper-blue)
 (scroll-bar-mode -1)
 
-;;(set-mouse-color "red3")
-;;(set-foreground-color "white")
-;;(set-background-color "gray6")
-
 ;;EXWM configuration
 (use-package exwm
  :ensure t
@@ -63,6 +59,9 @@
           ([s-right] . windmove-right)
           ([s-up] . windmove-up)
           ([s-down] . windmove-down)
+
+	  ;; Toggle fullscreen
+	  ([?\s-f] . exwm-layout-toggle-fullscreen)
 
           ;; Launch applications via shell command
           ([?\s-&] . (lambda (command)
