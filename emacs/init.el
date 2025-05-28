@@ -4,18 +4,36 @@
 (display-line-numbers-mode 1)
 (menu-bar-mode -1)
 (load-theme 'deeper-blue)
+(scroll-bar-mode -1)
 
 ;;(set-mouse-color "red3")
 ;;(set-foreground-color "white")
 ;;(set-background-color "gray6")
 
 ;;EXWM configuration
-
 (use-package exwm
  :ensure t
  :config
+  (require 'exwm-systemtray)
+  (exwm-systemtray-mode 1)
   (exwm-background-mode 1)
   (setq exwm-workspace-number 5)
+  ;;Pipewire volume control
+  (exwm-input-set-key (kbd "<XF86AudioLowerVolume>")
+		      (lambda ()
+			(interactive)
+			(shell-command "pactl set-sink-volume @DEFAULT_SINK@ -5%")
+			(shell-command "pactl get-sink-volume @DEFAULT_SINK@")))
+  (exwm-input-set-key (kbd "<XF86AudioRaiseVolume>")
+		      (lambda ()
+			(interactive)
+			(shell-command "pactl set-sink-volume @DEFAULT_SINK@ +5%")
+			(shell-command "pactl get-sink-volume @DEFAULT_SINK@")))
+  (exwm-input-set-key (kbd "<XF86AudioMute>")
+		      (lambda ()
+			(interactive)
+			(shell-command "pactl set-sink-mute @DEFAULT_SINK@ toggle")
+			(shell-command "pactl get-sink-mute @DEFAULT_SINK@")))
   ;; When window "class" updates, use it to set the buffer name
   ;; (add-hook 'exwm-update-class-hook #'efs/exwm-update-class)
   ;; These keys should always pass through to Emacs
@@ -67,7 +85,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages '(exwm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
