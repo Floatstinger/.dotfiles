@@ -5,6 +5,10 @@
 (menu-bar-mode -1)
 (load-theme 'deeper-blue)
 (scroll-bar-mode -1)
+(display-time-mode 1)
+
+(setq mouse-autoselect-window t
+      focus-follows-mouse t)
 
 ;;EXWM configuration
 (use-package exwm
@@ -12,6 +16,7 @@
  :config
   (require 'exwm-systemtray)
   (exwm-systemtray-mode 1)
+  (setq exwm-systemtray-height 30)
   (exwm-background-mode 1)
   (setq exwm-workspace-number 5)
   ;;Pipewire volume control
