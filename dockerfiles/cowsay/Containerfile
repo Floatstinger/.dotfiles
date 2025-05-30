@@ -1,0 +1,4 @@
+FROM ghcr.io/void-linux/void-glibc-full:latest
+MAINTAINER Floatstinger
+RUN xbps-install -Sy cowsay
+CMD ["/usr/bin/cowsay","sup"]
