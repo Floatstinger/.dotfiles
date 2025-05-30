@@ -1,6 +1,6 @@
 {
     "policies":{
-	"DisableTelemetry":true
+	"DisableTelemetry":true,
 	"Extensions":{
 	    "Install":[
 		"https://addons.mozilla.org/firefox/downloads/file/4493940/bitwarden_password_manager-2025.5.0.xpi",
