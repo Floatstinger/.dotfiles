@@ -1,5 +1,10 @@
-;;Emacs base setup
+;;MELPA
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+;;
 
+;;Emacs base setup
 (tool-bar-mode -1)
 (display-line-numbers-mode 1)
 (menu-bar-mode -1)
@@ -9,6 +14,12 @@
 
 (setq mouse-autoselect-window t
       focus-follows-mouse t)
+;;End of Emacs Base Setup
+
+;;Magit
+(use-package magit
+  :ensure t)
+;;
 
 ;;EXWM configuration
 (use-package exwm
