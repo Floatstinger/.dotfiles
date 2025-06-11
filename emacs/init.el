@@ -21,6 +21,13 @@
   :ensure t)
 ;;
 
+;;Company
+(use-package company
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-company-mode))
+;;
+
 ;;EXWM configuration
 (use-package exwm
  :ensure t
