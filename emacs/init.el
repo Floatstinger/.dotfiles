@@ -4,6 +4,9 @@
              '("melpa" . "https://melpa.org/packages/") t)
 ;;
 
+(unless package-archive-contents
+  (package-refresh-contents))
+
 ;;Emacs base setup
 (tool-bar-mode -1)
 (display-line-numbers-mode 1)
@@ -11,6 +14,8 @@
 (load-theme 'deeper-blue)
 (scroll-bar-mode -1)
 (display-time-mode 1)
+;; Do not create backup files
+(setq make-backup-files nil)
 
 (setq mouse-autoselect-window t
       focus-follows-mouse t)
@@ -27,6 +32,17 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 ;;
+
+;;qml-mode
+(use-package qml-mode
+  :ensure t
+  :mode ("\\.qml\\'" . qml-mode))
+
+;;lsp-mode
+(use-package lsp-mode
+  :ensure t
+  :commands lsp
+  :hook (qml-mode . lsp))
 
 ;;EXWM configuration
 (use-package exwm
@@ -116,7 +132,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(exwm)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
